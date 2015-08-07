@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{42D881C4-65DE-494F-9BC6-E90146C75514}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{0077348E-F4CB-41D3-8039-ABC65CC5FE4E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>pokerpalooza.domain</RootNamespace>
-    <AssemblyName>pokerpalooza.domain</AssemblyName>
+    <RootNamespace>pokerpalooza.console</RootNamespace>
+    <AssemblyName>pokerpalooza.console</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -29,6 +29,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -39,19 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\GameController.cs" />
-    <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\Blind.cs" />
-    <Compile Include="Models\BlindSetup.cs" />
-    <Compile Include="Models\Chip.cs" />
-    <Compile Include="Models\ChipStack.cs" />
-    <Compile Include="Models\Game.cs" />
-    <Compile Include="Models\GamePlayer.cs" />
-    <Compile Include="Models\GameState.cs" />
-    <Compile Include="Models\Player.cs" />
+    <Compile Include="pokerpalooza.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

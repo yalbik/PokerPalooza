@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5CA0E1
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pokerpalooza.console", "pokerpalooza.console\pokerpalooza.console.csproj", "{0077348E-F4CB-41D3-8039-ABC65CC5FE4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{420AE618-6467-4E86-ACC0-886DBC97EEA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{420AE618-6467-4E86-ACC0-886DBC97EEA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{420AE618-6467-4E86-ACC0-886DBC97EEA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0077348E-F4CB-41D3-8039-ABC65CC5FE4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0077348E-F4CB-41D3-8039-ABC65CC5FE4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0077348E-F4CB-41D3-8039-ABC65CC5FE4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0077348E-F4CB-41D3-8039-ABC65CC5FE4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

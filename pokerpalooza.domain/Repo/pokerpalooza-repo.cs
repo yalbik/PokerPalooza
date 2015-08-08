@@ -27,7 +27,7 @@ namespace pokerpalooza.domain.Repo
             return Connection.Query<Blind>(query, new { SetupID = blindSetupId });
         }
 
-        public void InsertBlind(Blind blind)
+        public void AddBlind(Blind blind)
         {
             Connection.Insert<Blind>(blind);
         }
@@ -40,6 +40,26 @@ namespace pokerpalooza.domain.Repo
         public void DeleteBlind(Blind blind)
         {
             Connection.Delete<Blind>(blind);
+        }
+
+        public IEnumerable<BlindSetup> GetBlindSetups()
+        {
+            return Connection.Query<BlindSetup>("SELECT * FROM BlindSetup");
+        }
+
+        public void AddBlindSetup(BlindSetup b)
+        {
+            Connection.Insert<BlindSetup>(b);
+        }
+
+        public void UpdateBlindSetup(BlindSetup b)
+        {
+            Connection.Update<BlindSetup>(b);
+        }
+
+        public void DeleteBlindSetup(BlindSetup b)
+        {
+            Connection.Delete<BlindSetup>(b);
         }
     }
 }

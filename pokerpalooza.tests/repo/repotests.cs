@@ -44,7 +44,7 @@ namespace pokerpalooza.tests.repo
                 repo.DeleteBlind(b);
             Assert.AreEqual(0, repo.GetBlindsForBlindSetup(9999).Count());
 
-            repo.InsertBlind(blind);
+            repo.AddBlind(blind);
             Assert.AreEqual(1, repo.GetBlindsForBlindSetup(9999).Count());
 
             blind.BlindLevel = 101;
@@ -53,6 +53,35 @@ namespace pokerpalooza.tests.repo
 
             repo.DeleteBlind(blind);
             Assert.AreEqual(0, repo.GetBlindsForBlindSetup(9999).Count());
+        }
+
+        [Test]
+        public void Crud_BlindSetup()
+        {
+            string testName = "ScooterTest123";
+            string testName2 = "ScooterTest321";
+
+            BlindSetup setup = new BlindSetup()
+            {
+                Name = testName
+            };
+
+            foreach (BlindSetup s in repo.GetBlindSetups().Where(x
+                    => x.Name.Equals(testName)
+                    || x.Name.Equals(testName2)))
+                repo.DeleteBlindSetup(s);
+            Assert.AreEqual(0, repo.GetBlindSetups().Where(x => x.Name.Equals(testName)).Count());
+
+            repo.AddBlindSetup(setup);
+            Assert.AreEqual(1, repo.GetBlindSetups().Where(x => x.Name.Equals(testName)).Count());
+
+            setup.Name = testName2;
+            repo.UpdateBlindSetup(setup);
+            Assert.AreEqual(1, repo.GetBlindSetups().Where(x => x.Name.Equals(testName2)).Count());
+            Assert.AreEqual(0, repo.GetBlindSetups().Where(x => x.Name.Equals(testName)).Count());
+
+            repo.DeleteBlindSetup(setup);
+            Assert.AreEqual(0, repo.GetBlindSetups().Where(x => x.Name.Equals(testName2)).Count());
         }
     }
 }

@@ -9,7 +9,6 @@ namespace pokerpalooza.domain.Models
     public class BlindSetup
     {
         public int ID { get; set; }
-        public int Length { get; set; }
-        public IEnumerable<Blind> BlindLevels { get; set; }
+        public string Name { get; set; }
     }
 }

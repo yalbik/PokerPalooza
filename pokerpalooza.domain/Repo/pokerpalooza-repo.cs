@@ -21,6 +21,12 @@ namespace pokerpalooza.domain.Repo
             Connection = new SqlConnection(connectionString);
         }
 
+        public IEnumerable<Blind> GetBlindsForBlindSetup(int blindSetupId)
+        {
+            string query = "SELECT * FROM Blind WHERE BlindSetupID = @SetupID";
+            return Connection.Query<Blind>(query, new { SetupID = blindSetupId });
+        }
+
         public void InsertBlind(Blind blind)
         {
             Connection.Insert<Blind>(blind);

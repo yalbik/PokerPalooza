@@ -40,7 +40,19 @@ namespace pokerpalooza.tests.repo
                 Interval = new TimeSpan(0, 20, 0)
             };
 
+            foreach (Blind b in repo.GetBlindsForBlindSetup(9999))
+                repo.DeleteBlind(b);
+            Assert.AreEqual(0, repo.GetBlindsForBlindSetup(9999).Count());
+
             repo.InsertBlind(blind);
+            Assert.AreEqual(1, repo.GetBlindsForBlindSetup(9999).Count());
+
+            blind.BlindLevel = 101;
+            repo.UpdateBlind(blind);
+            Assert.AreEqual(101, repo.GetBlindsForBlindSetup(9999).FirstOrDefault().BlindLevel);
+
+            repo.DeleteBlind(blind);
+            Assert.AreEqual(0, repo.GetBlindsForBlindSetup(9999).Count());
         }
     }
 }

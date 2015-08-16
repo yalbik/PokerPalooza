@@ -49,27 +49,9 @@ namespace pokerpalooza.tests.schema
         }
 
         [Test]
-        public void TableChipStackExists()
-        {
-            Assert.IsNotNull(db.Tables["ChipStack"]);
-        }
-
-        [Test]
         public void TableGameExists()
         {
             Assert.IsNotNull(db.Tables["Game"]);
-        }
-
-        [Test]
-        public void TableGamePlayerExists()
-        {
-            Assert.IsNotNull(db.Tables["GamePlayer"]);
-        }
-
-        [Test]
-        public void TableGameStateExists()
-        {
-            Assert.IsNotNull(db.Tables["GameState"]);
         }
 
         [Test]

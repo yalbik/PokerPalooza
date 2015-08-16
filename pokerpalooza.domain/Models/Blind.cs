@@ -10,7 +10,7 @@ namespace pokerpalooza.domain.Models
     {
         public int ID { get; set; }
         public int BlindSetupID { get; set; }
-        public TimeSpan Interval { get; set; }
+        public int Interval { get; set; }
         public int BlindLevel { get; set; }
     }
 }

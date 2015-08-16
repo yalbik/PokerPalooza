@@ -37,7 +37,7 @@ namespace pokerpalooza.tests.repo
                 ID = 0,
                 BlindSetupID = 9999,
                 BlindLevel = 100,
-                Interval = new TimeSpan(0, 20, 0)
+                Interval = 20
             };
 
             foreach (Blind b in repo.GetBlindsForBlindSetup(9999))

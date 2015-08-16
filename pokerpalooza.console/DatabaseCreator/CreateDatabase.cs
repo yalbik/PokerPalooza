@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,10 @@ namespace pokerpalooza.console.DatabaseCreator
         public CreateDatabase(string serverName)
         {
             OverwriteExisting = false;
-            Srv = new Server(new ServerConnection(serverName));
+            SqlConnection sqlCon = new SqlConnection(@"Server=(LocalDB)\MSSQLLocalDB;AttachDbFileName=C:\codez\pokerpalooza\pokerpalooza.domain\pokerpalooza.mdf;Integrated Security=true");
+            ServerConnection connection = new ServerConnection(sqlCon);
+            Srv = new Server(connection);
+
             PokerPalooza = Srv.Databases["PokerPalooza"];
             Console.WriteLine("SMO created server with version {0}", Srv.Version);
         }

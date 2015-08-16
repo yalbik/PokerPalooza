@@ -61,5 +61,65 @@ namespace pokerpalooza.domain.Repo
         {
             Connection.Delete<BlindSetup>(b);
         }
+
+        public IEnumerable<Chip> GetChips()
+        {
+            return Connection.Query<Chip>("SELECT * FROM Chip");
+        }
+
+        public void AddChip(Chip b)
+        {
+            Connection.Insert<Chip>(b);
+        }
+
+        public void UpdateChip(Chip b)
+        {
+            Connection.Update<Chip>(b);
+        }
+
+        public void DeleteChip(Chip b)
+        {
+            Connection.Delete<Chip>(b);
+        }
+
+        public IEnumerable<Game> GetGames()
+        {
+            return Connection.Query<Game>("SELECT * FROM Game");
+        }
+
+        public void AddGame(Game b)
+        {
+            Connection.Insert<Game>(b);
+        }
+
+        public void UpdateGame(Game b)
+        {
+            Connection.Update<Game>(b);
+        }
+
+        public void DeleteGame(Game b)
+        {
+            Connection.Delete<Game>(b);
+        }
+
+        public IEnumerable<Player> GetPlayers()
+        {
+            return Connection.Query<Player>("SELECT * FROM Player");
+        }
+
+        public void AddPlayer(Player b)
+        {
+            Connection.Insert<Player>(b);
+        }
+
+        public void UpdatePlayer(Player b)
+        {
+            Connection.Update<Player>(b);
+        }
+
+        public void DeletePlayer(Player b)
+        {
+            Connection.Delete<Player>(b);
+        }
     }
 }

@@ -83,5 +83,43 @@ namespace pokerpalooza.tests.repo
             repo.DeleteBlindSetup(setup);
             Assert.AreEqual(0, repo.GetBlindSetups().Where(x => x.Name.Equals(testName2)).Count());
         }
+
+        [Test]
+        public void Crud_Chip()
+        {
+            string testColor1 = "Poop", testColor2 = "Blood";
+            int testValue1 = 69, testValue2 = 420;
+
+            foreach (Chip c in repo.GetChips().Where(x
+                    => x.Color.Equals(testColor1)
+                    || x.Color.Equals(testColor2)))
+                repo.DeleteChip(c);
+
+            Chip chip = new Chip { Color = testColor1, Value = testValue1 };
+            
+            repo.AddChip(chip);
+            Assert.AreEqual(1, repo.GetChips().Where(x 
+                => x.Color.Equals(testColor1)
+                && x.Value == testValue1).Count());
+
+            chip.Color = testColor2;
+            chip.Value = testValue2;
+
+            repo.UpdateChip(chip);
+            Assert.AreEqual(1, repo.GetChips().Where(x
+                => x.Color.Equals(testColor2)
+                && x.Value == testValue2).Count());
+            Assert.AreEqual(0, repo.GetChips().Where(x
+                => x.Color.Equals(testColor1)
+                && x.Value == testValue1).Count());
+
+            repo.DeleteChip(chip);
+            Assert.AreEqual(0, repo.GetChips().Where(x
+                => x.Color.Equals(testColor1)
+                && x.Value == testValue1).Count());
+            Assert.AreEqual(0, repo.GetChips().Where(x
+                => x.Color.Equals(testColor2)
+                && x.Value == testValue2).Count());
+        }
     }
 }

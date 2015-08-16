@@ -10,7 +10,10 @@ namespace pokerpalooza.console
     {
         public pokerpalooza()
         {
-            Console.WriteLine("shit works.");
+            DatabaseCreator.CreateDatabase creator = new DatabaseCreator.CreateDatabase(@"(LocalDB)\MSSQLLocalDB");
+            creator.OverwriteExisting = true;
+
+            creator.CreatePokerpaloozaDatabase();
         }
 
         public static void Main(String[] args)

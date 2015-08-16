@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Microsoft.SqlServer.Management.Smo;
+using Microsoft.SqlServer.Management.Common;
 
 namespace pokerpalooza.console.DatabaseCreator
 {
@@ -22,7 +23,8 @@ namespace pokerpalooza.console.DatabaseCreator
         public CreateDatabase(string serverName)
         {
             OverwriteExisting = false;
-            Srv = new Server(serverName);
+            Srv = new Server(new ServerConnection(serverName));
+            PokerPalooza = Srv.Databases["PokerPalooza"];
             Console.WriteLine("SMO created server with version {0}", Srv.Version);
         }
 
@@ -46,6 +48,8 @@ namespace pokerpalooza.console.DatabaseCreator
             CreateTableBlindSetup();
             CreateTableBlind();
             CreateTableChip();
+            CreateTableGame();
+            CreateTablePlayer();
         }
 
         public void CreateTable(string name, List<Column> columns)
@@ -73,6 +77,8 @@ namespace pokerpalooza.console.DatabaseCreator
             Blind.Columns.Add(new Column(Blind, "BlindSetupId", DataType.Int));
             Blind.Columns.Add(new Column(Blind, "Interval", DataType.Int));
             Blind.Columns.Add(new Column(Blind, "BlindLevel", DataType.Int));
+
+            PokerPalooza.Tables.Add(Blind);
             Blind.Create();
         }
 
@@ -85,6 +91,8 @@ namespace pokerpalooza.console.DatabaseCreator
             BlindSetup.Columns["ID"].Identity = true;
 
             BlindSetup.Columns.Add(new Column(BlindSetup, "Name", DataType.VarChar(256)));
+
+            PokerPalooza.Tables.Add(BlindSetup);
             BlindSetup.Create();
         }
 
@@ -98,8 +106,44 @@ namespace pokerpalooza.console.DatabaseCreator
 
             Chip.Columns.Add(new Column(Chip, "Color", DataType.VarChar(16)));
             Chip.Columns.Add(new Column(Chip, "Value", DataType.Int));
+
+            PokerPalooza.Tables.Add(Chip);
+            Chip.Create();
         }
-        
+
+        public void CreateTableGame()
+        {
+            PrepareForTableCreation("Game");
+            Table Game = new Table(PokerPalooza, "Game");
+
+            Game.Columns.Add(new Column(Game, "ID", DataType.Int));
+            Game.Columns["ID"].Identity = true;
+
+            Game.Columns.Add(new Column(Game, "GameTime", DataType.DateTime));
+            Game.Columns.Add(new Column(Game, "Buyin", DataType.Int));
+            Game.Columns.Add(new Column(Game, "Bounty", DataType.Int));
+
+            PokerPalooza.Tables.Add(Game);
+            Game.Create();
+        }
+
+        public void CreateTablePlayer()
+        {
+            PrepareForTableCreation("Player");
+            Table Player = new Table(PokerPalooza, "Player");
+
+            Player.Columns.Add(new Column(Player, "ID", DataType.Int));
+            Player.Columns["ID"].Identity = true;
+
+            Player.Columns.Add(new Column(Player, "DisplayName", DataType.VarChar(128)));
+            Player.Columns.Add(new Column(Player, "FirstName", DataType.VarChar(128)));
+            Player.Columns.Add(new Column(Player, "LastName", DataType.VarChar(128)));
+            Player.Columns.Add(new Column(Player, "Phone", DataType.VarChar(16)));
+
+            PokerPalooza.Tables.Add(Player);
+            Player.Create();
+        }
+
 
         private void PrepareForTableCreation(string table)
         {

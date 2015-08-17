@@ -18,15 +18,13 @@ namespace pokerpalooza.domain
 
         Database PokerPalooza { get; set; }
 
-        Table Blind { get; set; }
-        Table BlindSetup { get; set; }
-
         public DatabaseCreator(string connectionString)
         {
             OverwriteExisting = false;
-            SqlConnection sqlCon = new SqlConnection(connectionString);
-            ServerConnection connection = new ServerConnection(sqlCon);
-            Srv = new Server(connection);
+
+            Srv = new Server(
+                new ServerConnection(
+                    new SqlConnection(connectionString)));
 
             PokerPalooza = Srv.Databases["PokerPalooza"];
         }
@@ -40,16 +38,7 @@ namespace pokerpalooza.domain
 
         public void CreatePokerpaloozaDatabase()
         {
-            //if (Srv.Databases.Contains("PokerPalooza"))
-            //{
-            //    if (!OverwriteExisting)
-            //        throw new Exception("PokerPalooza database already exists and OverwriteExisting is set to false.");
-            //    Srv.Databases["PokerPalooza"].Drop();
-            //    Console.WriteLine();
-            //}
-
-            //Srv.Databases.Add(new Database(Srv, "PokerPalooza"));
-            //Srv.Databases["PokerPalooza"].Create();
+            // TODO: get this to work. Presently you gotta create the MS LocalDB by hand. I can't get SMO to do it. 
         }
 
         public void CreatePokerPaloozaTables()

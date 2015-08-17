@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using pokerpalooza.domain.Models;
 
-namespace pokerpalooza.console.GameController
+namespace pokerpalooza.domain
 {
     public static class Helper
     {

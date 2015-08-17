@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\Helper.cs" />
     <Compile Include="Models\Blind.cs" />
     <Compile Include="Models\BlindSetup.cs" />
     <Compile Include="Models\Chip.cs" />

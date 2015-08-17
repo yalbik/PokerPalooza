@@ -95,8 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseCreator\CreateDatabase.cs" />
-    <Compile Include="GameController\GameController.cs" />
-    <Compile Include="GameController\Helper.cs" />
     <Compile Include="pokerpalooza.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

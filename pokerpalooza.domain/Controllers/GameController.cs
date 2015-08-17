@@ -11,6 +11,12 @@ namespace pokerpalooza.domain
     public class GameController
     {
         public Game ActiveGame { get; set; }
+        public pokerpalooza_repo Repo { get; set; }
+
+        public GameController(pokerpalooza_repo repo)
+        {
+            Repo = repo;
+        }
 
         public void NewGame(DateTime date, int buyin, int? bounty, IEnumerable<Player> players)
         {

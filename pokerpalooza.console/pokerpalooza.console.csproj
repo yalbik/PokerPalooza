@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menus\DatabaseMenu.cs" />
     <Compile Include="Menus\GameMenu.cs" />
     <Compile Include="Menus\PlayerMenu.cs" />
     <Compile Include="pokerpalooza.cs" />
@@ -52,6 +54,9 @@
       <Project>{42d881c4-65de-494f-9bc6-e90146c75514}</Project>
       <Name>pokerpalooza.domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

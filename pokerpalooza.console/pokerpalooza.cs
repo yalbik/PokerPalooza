@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +13,16 @@ namespace pokerpalooza.console
     class pokerpalooza
     {
         GameController Controller;
+        pokerpalooza_repo Repo;
+        DatabaseCreator Creator;
 
         public pokerpalooza()
         {
-            DatabaseCreator creator = new DatabaseCreator(@"(LocalDB)\MSSQLLocalDB");
-            creator.OverwriteExisting = true;
+            Creator = new DatabaseCreator(ConfigurationManager.ConnectionStrings["pokerpalooza-db"].ConnectionString);
+            Creator.OverwriteExisting = true;
 
-            Controller = new GameController();
+            Repo = new pokerpalooza_repo(ConfigurationManager.ConnectionStrings["pokerpalooza-db"].ConnectionString);
+            Controller = new GameController(Repo);
 
             menu();
         }
@@ -31,6 +35,7 @@ namespace pokerpalooza.console
                 Console.WriteLine("** Main Menu **");
                 Console.WriteLine("1. Game Menu");
                 Console.WriteLine("2. Player Menu");
+                Console.WriteLine("3. Database Maintenence Menu");
                 Console.WriteLine("Q. Quit this program");
                 Console.Write("--> ");
 
@@ -42,11 +47,14 @@ namespace pokerpalooza.console
                         GameMenu.MainMenu(Controller);
                         break;
                     case "2":
-                        PlayerMenu.MainMenu(Controller);
+                        PlayerMenu.MainMenu(Controller, Repo);
+                        break;
+                    case "3":
+                        DatabaseMenu.MainMenu(Creator);
                         break;
                     default:
                         Console.WriteLine("You straight trippin'");
-                        break;
+                        continue; ;
                 }
             }
         }

@@ -10,7 +10,7 @@ using DapperExtensions;
 
 using pokerpalooza.domain.Models;
 
-namespace pokerpalooza.domain.Repo
+namespace pokerpalooza.domain
 {
     public class pokerpalooza_repo
     {

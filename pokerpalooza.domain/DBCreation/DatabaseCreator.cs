@@ -21,10 +21,10 @@ namespace pokerpalooza.domain
         Table Blind { get; set; }
         Table BlindSetup { get; set; }
 
-        public DatabaseCreator(string serverName)
+        public DatabaseCreator(string connectionString)
         {
             OverwriteExisting = false;
-            SqlConnection sqlCon = new SqlConnection(@"Server=(LocalDB)\MSSQLLocalDB;AttachDbFileName=C:\codez\pokerpalooza\pokerpalooza.domain\pokerpalooza.mdf;Integrated Security=true");
+            SqlConnection sqlCon = new SqlConnection(connectionString);
             ServerConnection connection = new ServerConnection(sqlCon);
             Srv = new Server(connection);
 
@@ -34,39 +34,31 @@ namespace pokerpalooza.domain
         public void CreatePokerPalooza()
         {
             CreatePokerpaloozaDatabase();
+            CreatePokerPaloozaTables();
+            Console.WriteLine("PokerPalooza schema created.");
         }
 
         public void CreatePokerpaloozaDatabase()
         {
-            if (Srv.Databases.Contains("PokerPalooza"))
-            {
-                if (!OverwriteExisting)
-                    throw new Exception("PokerPalooza database already exists and OverwriteExisting is set to false.");
-                Srv.Databases["PokerPalooza"].Drop();
-            }
+            //if (Srv.Databases.Contains("PokerPalooza"))
+            //{
+            //    if (!OverwriteExisting)
+            //        throw new Exception("PokerPalooza database already exists and OverwriteExisting is set to false.");
+            //    Srv.Databases["PokerPalooza"].Drop();
+            //    Console.WriteLine();
+            //}
 
-            PokerPalooza = new Database(Srv, "PokerPalooza");
-            PokerPalooza.Create();
+            //Srv.Databases.Add(new Database(Srv, "PokerPalooza"));
+            //Srv.Databases["PokerPalooza"].Create();
+        }
 
+        public void CreatePokerPaloozaTables()
+        {
             CreateTableBlindSetup();
             CreateTableBlind();
             CreateTableChip();
             CreateTableGame();
             CreateTablePlayer();
-        }
-
-        public void CreateTable(string name, List<Column> columns)
-        {
-            if (PokerPalooza.Tables.Contains(name))
-            {
-                if (!OverwriteExisting)
-                    throw new Exception("PokerPalooza contrains the table " + name + " and OverwriteExisting is set to false.");
-                PokerPalooza.Tables[name].Drop();
-            }
-            Table table = new Table(PokerPalooza, name);
-            foreach (Column col in columns)
-                table.Columns.Add(col);
-            table.Create();
         }
 
         public void CreateTableBlind()
@@ -141,15 +133,16 @@ namespace pokerpalooza.domain
             Player.Columns.Add(new Column(Player, "DisplayName", DataType.VarChar(128)));
             Player.Columns.Add(new Column(Player, "FirstName", DataType.VarChar(128)));
             Player.Columns.Add(new Column(Player, "LastName", DataType.VarChar(128)));
-            Player.Columns.Add(new Column(Player, "Phone", DataType.VarChar(16)));
+            Player.Columns.Add(new Column(Player, "PhoneNumber", DataType.VarChar(16)));
 
             PokerPalooza.Tables.Add(Player);
             Player.Create();
         }
 
-
         private void PrepareForTableCreation(string table)
         {
+            if (PokerPalooza.Tables == null)
+                return;
             if (PokerPalooza.Tables.Contains(table))
             {
                 if (!OverwriteExisting)

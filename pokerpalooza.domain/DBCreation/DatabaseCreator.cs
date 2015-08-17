@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Microsoft.SqlServer.Management.Smo;
 using Microsoft.SqlServer.Management.Common;
 
-namespace pokerpalooza.console.DatabaseCreator
+namespace pokerpalooza.domain
 {
-    public class CreateDatabase
+    public class DatabaseCreator
     {
         public Boolean OverwriteExisting { get; set; }
 
@@ -21,7 +21,7 @@ namespace pokerpalooza.console.DatabaseCreator
         Table Blind { get; set; }
         Table BlindSetup { get; set; }
 
-        public CreateDatabase(string serverName)
+        public DatabaseCreator(string serverName)
         {
             OverwriteExisting = false;
             SqlConnection sqlCon = new SqlConnection(@"Server=(LocalDB)\MSSQLLocalDB;AttachDbFileName=C:\codez\pokerpalooza\pokerpalooza.domain\pokerpalooza.mdf;Integrated Security=true");

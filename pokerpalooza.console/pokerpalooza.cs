@@ -15,7 +15,7 @@ namespace pokerpalooza.console
 
         public pokerpalooza()
         {
-            DatabaseCreator.CreateDatabase creator = new DatabaseCreator.CreateDatabase(@"(LocalDB)\MSSQLLocalDB");
+            DatabaseCreator creator = new DatabaseCreator(@"(LocalDB)\MSSQLLocalDB");
             creator.OverwriteExisting = true;
 
             Controller = new GameController();

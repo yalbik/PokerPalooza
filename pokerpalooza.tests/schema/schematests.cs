@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Microsoft.SqlServer.Management.Smo;
-using NUnit.Framework;
 using Microsoft.SqlServer.Management.Common;
+using NUnit.Framework;
 
 namespace pokerpalooza.tests.schema
 {

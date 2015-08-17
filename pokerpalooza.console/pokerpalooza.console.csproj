@@ -95,11 +95,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseCreator\CreateDatabase.cs" />
+    <Compile Include="GameController\GameController.cs" />
+    <Compile Include="GameController\Helper.cs" />
     <Compile Include="pokerpalooza.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\pokerpalooza.domain\pokerpalooza.domain.csproj">
+      <Project>{42d881c4-65de-494f-9bc6-e90146c75514}</Project>
+      <Name>pokerpalooza.domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -11,7 +11,7 @@ namespace pokerpalooza.domain.Models
         public int ID { get; set; }
         public DateTime GameTime { get; set; }
         public int Buyin { get; set; }
-        public int Bounty { get; set; }
-        public IEnumerable<GamePlayer> Players { get; set; }
+        public int? Bounty { get; set; }
+        public List<GamePlayer> Players { get; set; }
     }
 }

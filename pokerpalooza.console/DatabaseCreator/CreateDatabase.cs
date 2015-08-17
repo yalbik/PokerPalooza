@@ -29,7 +29,6 @@ namespace pokerpalooza.console.DatabaseCreator
             Srv = new Server(connection);
 
             PokerPalooza = Srv.Databases["PokerPalooza"];
-            Console.WriteLine("SMO created server with version {0}", Srv.Version);
         }
 
         public void CreatePokerPalooza()

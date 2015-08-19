@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pokerpalooza.web", "pokerpalooza\pokerpalooza.web.csproj", "{A4A3197F-D490-4315-83A8-6FC2E98B70DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pokerpalooza.web", "pokerpalooza.web\pokerpalooza.web.csproj", "{A4A3197F-D490-4315-83A8-6FC2E98B70DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pokerpalooza.domain", "pokerpalooza.domain\pokerpalooza.domain.csproj", "{42D881C4-65DE-494F-9BC6-E90146C75514}"
 EndProject

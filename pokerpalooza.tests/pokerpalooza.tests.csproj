@@ -118,6 +118,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlindController\BlindControllerTests.cs" />
+    <Compile Include="BlindController\BlindTimerTests.cs" />
     <Compile Include="GameController\GameControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repo\repotests.cs" />

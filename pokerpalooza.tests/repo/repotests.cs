@@ -35,7 +35,8 @@ namespace pokerpalooza.tests.repo
             {
                 ID = 0,
                 BlindSetupID = 9999,
-                BlindLevel = 100,
+                BigBlind = 99,
+                LittleBlind = 101,
                 Interval = 20
             };
 
@@ -46,9 +47,9 @@ namespace pokerpalooza.tests.repo
             repo.AddBlind(blind);
             Assert.AreEqual(1, repo.GetBlindsForBlindSetup(9999).Count());
 
-            blind.BlindLevel = 101;
+            blind.BigBlind = 101;
             repo.UpdateBlind(blind);
-            Assert.AreEqual(101, repo.GetBlindsForBlindSetup(9999).FirstOrDefault().BlindLevel);
+            Assert.AreEqual(101, repo.GetBlindsForBlindSetup(9999).FirstOrDefault().BigBlind);
 
             repo.DeleteBlind(blind);
             Assert.AreEqual(0, repo.GetBlindsForBlindSetup(9999).Count());

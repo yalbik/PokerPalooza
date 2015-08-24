@@ -114,6 +114,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BlindController.cs" />
+    <Compile Include="Controllers\BlindTimer.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\Helper.cs" />
     <Compile Include="DBCreation\DatabaseCreator.cs" />

@@ -11,6 +11,7 @@ namespace pokerpalooza.domain
         public int ID { get; set; }
         public int BlindSetupID { get; set; }
         public int Interval { get; set; }
-        public int BlindLevel { get; set; }
+        public int BigBlind { get; set; }
+        public int LittleBlind { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace pokerpalooza.console.Menus
                 Console.WriteLine("\n* Player Menu *");
                 Console.WriteLine("1. View all stored players");
                 Console.WriteLine("2. Add a new player");
+                Console.WriteLine("3. Delete a player");
                 Console.WriteLine("X. Go Back");
                 Console.Write("--> ");
 
@@ -29,6 +30,9 @@ namespace pokerpalooza.console.Menus
                         break;
                     case "2":
                         AddPlayer(Repo);
+                        break;
+                    case "3":
+                        DeletePlayer(Repo);
                         break;
                     default:
                         Console.WriteLine("You fell off the top of the stupid tree.");
@@ -52,6 +56,13 @@ namespace pokerpalooza.console.Menus
                 Console.WriteLine("\t\"{0}\"", p.DisplayName);
                 Console.WriteLine("\t{0}", p.PhoneNumber);
             }
+        }
+
+        public static void ShowAllPlayersJustDisplayNames(pokerpalooza_repo repo)
+        {
+            List<Player> players = repo.GetPlayers().ToList();
+            for (int i = 0; i < players.Count(); i++)
+                Console.WriteLine("{0}: {1}", i.ToString(), players[i].DisplayName);
         }
 
         public static Player AddPlayer(pokerpalooza_repo repo)
@@ -79,6 +90,32 @@ namespace pokerpalooza.console.Menus
             repo.AddPlayer(player);
 
             return player;
+        }
+
+        public static void DeletePlayer(pokerpalooza_repo repo)
+        {
+            while (true)
+            {
+                Console.WriteLine("Choose player to delete:");
+                ShowAllPlayersJustDisplayNames(repo);
+                Console.WriteLine("X. Go Back");
+                Console.Write("--> ");
+
+                string input = Console.ReadLine().ToLowerInvariant();
+                if (input.Equals("x"))
+                    return;
+
+                try
+                {
+                    repo.DeletePlayer(repo.GetPlayers().ToList()[int.Parse(input)]);
+                    Console.WriteLine("Player deleted.");
+                    break;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Could not process request.");
+                }
+            }
         }
     }
 }

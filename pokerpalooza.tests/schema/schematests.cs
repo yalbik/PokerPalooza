@@ -25,37 +25,37 @@ namespace pokerpalooza.tests.schema
         }
 
         [Test]
-        public void DatabaseExists()
+        public void Schema_DatabaseExists()
         {
             Assert.IsNotNull(db.CreateDate);
         }
 
         [Test]
-        public void TableBlindExists()
+        public void Schema_TableBlindExists()
         {
             Assert.IsNotNull(db.Tables["Blind"]);
         }
 
         [Test]
-        public void TableBlindSetupExists()
+        public void Schema_TableBlindSetupExists()
         {
             Assert.IsNotNull(db.Tables["BlindSetup"]);
         }
 
         [Test]
-        public void TableChipExists()
+        public void Schema_TableChipExists()
         {
             Assert.IsNotNull(db.Tables["Chip"]);
         }
 
         [Test]
-        public void TableGameExists()
+        public void Schema_TableGameExists()
         {
             Assert.IsNotNull(db.Tables["Game"]);
         }
 
         [Test]
-        public void TablePlayerExists()
+        public void Schema_TablePlayerExists()
         {
             Assert.IsNotNull(db.Tables["Player"]);
         }

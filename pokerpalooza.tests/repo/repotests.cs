@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 
 using pokerpalooza.domain;
-using pokerpalooza.domain.Models;
 
 namespace pokerpalooza.tests.repo
 {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Timers;
 using System.Threading.Tasks;
 
-namespace pokerpalooza.domain.Models
+namespace pokerpalooza.domain
 {
     public class GameState
     {

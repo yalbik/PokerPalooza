@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pokerpalooza.domain.Models
+namespace pokerpalooza.domain
 {
     public class Player
     {

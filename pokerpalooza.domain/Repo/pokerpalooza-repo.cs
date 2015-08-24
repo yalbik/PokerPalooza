@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Dapper;
 using DapperExtensions;
 
-using pokerpalooza.domain.Models;
+using pokerpalooza.domain;
 
 namespace pokerpalooza.domain
 {

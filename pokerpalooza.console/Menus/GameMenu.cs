@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 using pokerpalooza.domain;
-using pokerpalooza.domain.Models;
 
 namespace pokerpalooza.console.Menus
 {

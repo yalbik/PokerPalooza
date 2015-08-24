@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using pokerpalooza.domain;
+using pokerpalooza.domain.Models;
 
 namespace pokerpalooza.console.Menus
 {
@@ -17,6 +18,7 @@ namespace pokerpalooza.console.Menus
                 Console.WriteLine("\n** Game menu **");
                 Console.WriteLine("1. Show current game status");
                 Console.WriteLine("2. Create a New Game");
+                Console.WriteLine("3. Add player to current game");
                 Console.WriteLine("X. Go back");
                 Console.Write("--> ");
 
@@ -92,6 +94,35 @@ namespace pokerpalooza.console.Menus
             }
 
             Controller.NewGame(gameDate, buyin, bounty == 0 ? (int?)null : bounty, null);
+        }
+
+        static void AddPlayerToCurrentGame(GameController controller)
+        {
+            List<Player> availablePlayers = controller.AvailablePlayersForGame().ToList();
+
+            if (controller.AvailablePlayersForGame().Count() == 0)
+            {
+                Console.WriteLine("There are no available players for the current game.");
+                return;
+            }
+
+            while (true)
+            {
+                Console.WriteLine("\nSelect player to add to current game:");
+                for (int i = 0; i < availablePlayers.Count(); i++)
+                    Console.WriteLine("{0}: {1}", i.ToString(), availablePlayers[i].DisplayName);
+
+                try
+                {
+                    controller.AddPlayer(availablePlayers[int.Parse(Console.ReadLine())]);
+                    Console.WriteLine("{0} was added to the current game.");
+                    break;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("ENGLISH MOTHERFUCKER YOU SPEAK IT");
+                }
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ namespace pokerpalooza.domain
         public GameController(pokerpalooza_repo repo)
         {
             Repo = repo;
-        }
+        } 
 
         public void NewGame(DateTime date, int buyin, int? bounty, IEnumerable<Player> players)
         {
@@ -31,5 +31,17 @@ namespace pokerpalooza.domain
         {
             ActiveGame.Players.Add(new GamePlayer { Game = ActiveGame, Player = player });
         }
+
+        public IEnumerable<Player> AvailablePlayersForGame()
+        {
+            List<Player> availablePlayers = new List<Player>();
+
+            foreach (Player player in Repo.GetPlayers())
+                if (!ActiveGame.Players.Contains(new GamePlayer { Game = ActiveGame, Player = player }))
+                    availablePlayers.Add(player);
+
+            return availablePlayers;
+        }
+
     }
 }

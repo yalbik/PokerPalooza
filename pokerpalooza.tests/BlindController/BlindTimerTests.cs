@@ -28,7 +28,7 @@ namespace pokerpalooza.tests.BlindController
         {
             _timer = new BlindTimer(10);
             _timer.Start();
-            Thread.Sleep(1000);
+            Thread.Sleep(1100);
             Assert.AreEqual(9, _timer.SecondsRemaining());
         }
 

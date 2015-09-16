@@ -60,7 +60,8 @@ namespace pokerpalooza.domain
 
             Blind.Columns.Add(new Column(Blind, "BlindSetupId", DataType.Int));
             Blind.Columns.Add(new Column(Blind, "Interval", DataType.Int));
-            Blind.Columns.Add(new Column(Blind, "BlindLevel", DataType.Int));
+            Blind.Columns.Add(new Column(Blind, "BigBlind", DataType.Int));
+            Blind.Columns.Add(new Column(Blind, "LittleBlind", DataType.Int));
 
             PokerPalooza.Tables.Add(Blind);
             Blind.Create();

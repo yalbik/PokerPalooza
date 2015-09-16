@@ -16,16 +16,19 @@ namespace pokerpalooza.domain
     
     public class BlindController : IBlindController
     {
-        public Timer BlindTimer { get; set; }
+        public BlindTimer BlindTimer { get; set; }
         Blind Blind { get; set; }
+        DateTime startTime, endTime;
 
         public BlindController(Blind blind)
         {
-            BlindTimer = new Timer((double)(Blind.Interval * 60 * 1000));
+            BlindTimer = new BlindTimer((Blind.Interval * 60 * 1000));
         }
         
         public void Start()
         {
+            if (startTime == null)
+                startTime = DateTime.Now;
             BlindTimer.Start();
         }
 
@@ -42,7 +45,7 @@ namespace pokerpalooza.domain
         // returns seconds!
         public int TimeRemaining()
         {
-            return 0;
+            return BlindTimer.Remaining;
         }
     }
 }

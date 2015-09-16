@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,14 +15,17 @@ namespace pokerpalooza.tests.schema
     [TestFixture]
     public class schematests
     {
-        Server server;
         Database db;
+        Server server;
 
         [TestFixtureSetUp]
         public void SetShitUp()
         {
-            ServerConnection con = new ServerConnection(@"(LocalDB)\MSSQLLocalDB");
-            server = new Server(con);
+            server = new Server(
+                new ServerConnection(
+                    new SqlConnection(
+                        ConfigurationManager.ConnectionStrings["pokerpalooza-db"].ConnectionString
+                )));
             db = server.Databases["PokerPalooza"];
         }
 

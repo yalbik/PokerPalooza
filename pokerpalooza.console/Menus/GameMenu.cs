@@ -18,23 +18,32 @@ namespace pokerpalooza.console.Menus
                 Console.WriteLine("1. Show current game status");
                 Console.WriteLine("2. Create a New Game");
                 Console.WriteLine("3. Add player to current game");
+                Console.WriteLine("4. Create New Blind Setup");
                 Console.WriteLine("X. Go back");
                 Console.Write("--> ");
 
-                switch (Console.ReadLine().ToLowerInvariant())
+
+                try
                 {
-                    case "x":
-                        return;
-                    case "1":
-                        Helper.ShowGame(Controller.ActiveGame);
-                        break;
-                    case "2":
-                        NewGame(Controller);
-                        break;
-                    default:
-                        Console.WriteLine("what the fuck?");
-                        continue;
+                    switch (Console.ReadLine().ToLowerInvariant())
+                    {
+                        case "x":
+                            return;
+                        case "1":
+                            Helper.ShowGame(Controller.ActiveGame);
+                            break;
+                        case "2":
+                            NewGame(Controller);
+                            break;
+                        case "3":
+                            AddPlayerToCurrentGame(Controller);
+                            break;
+                        default:
+                            Console.WriteLine("what the fuck?");
+                            continue;
+                    }
                 }
+                catch (Exception e) { Console.WriteLine(e.Message); }
             }
         }
 
@@ -119,7 +128,7 @@ namespace pokerpalooza.console.Menus
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("ENGLISH MOTHERFUCKER YOU SPEAK IT");
+                    Console.WriteLine("ENGLISH MOTHERFUCKER DO YOU SPEAK IT");
                 }
             }
         }

@@ -12,6 +12,7 @@ namespace pokerpalooza.domain
     {
         public Game ActiveGame { get; set; }
         public pokerpalooza_repo Repo { get; set; }
+        public BlindSetup BlindConfiguration { get; set; }
 
         public GameController(pokerpalooza_repo repo)
         {
@@ -35,9 +36,13 @@ namespace pokerpalooza.domain
         public IEnumerable<Player> AvailablePlayersForGame()
         {
             List<Player> availablePlayers = new List<Player>();
+            if (ActiveGame == null)
+                throw new Exception("Error: There is no active game; please create one.");
 
             foreach (Player player in Repo.GetPlayers())
-                if (!ActiveGame.Players.Contains(new GamePlayer { Game = ActiveGame, Player = player }))
+                if (ActiveGame.Players.Where(x =>
+                        x.Game == ActiveGame &&
+                        x.Player.DisplayName.Equals(player.DisplayName)).FirstOrDefault() == null)
                     availablePlayers.Add(player);
 
             return availablePlayers;

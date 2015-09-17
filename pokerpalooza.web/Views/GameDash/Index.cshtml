@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Pokerpalooza - Dashboard";
+}
+
+<div class="Pokerpalooza-Dashboard">
+    <div class="header plaque">
+        <div class="bevel">
+            <div class="header-text">Skinz's</div>
+			<div class="header-text2">PokerPalooza</div>
+        </div>
+    </div>
+    <div id="body">
+        @if (Model.GameID > 0)
+        {
+            @Html.Partial("_PlayersPartial")
+            @Html.Partial("_BlindsPartial")
+            @Html.Partial("_ChipKeyPartial")
+            @Html.Partial("_GamePartial")
+            @Html.Partial("_TimerPartial")
+        }
+    </div>
+    <footer>
+	    <p>&copy; 2015 - PokerPalooza</p>
+    </footer>
+	<div id="Modal_Overlay" class="hidden"></div>
+	<div id="Menu_Expand">MAIN MENU</div>
+    @Html.Partial("_MainMenuPartial")
+    @Html.Partial("_NewGamePartial")
+    @Html.Partial("_AddPlayerPartial")
+    @Html.Partial("_SetPayoutsPartial")
+</div>

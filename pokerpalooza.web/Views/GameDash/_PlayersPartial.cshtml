@@ -1,0 +1,48 @@
+﻿@inherits WebViewPage<List<Blind>>
+@using pokerpalooza.domain
+
+<div class="players">
+	<h1>Players</h1>
+	<div class="button" title="Add player" id="Add_Player">+</div>
+	<div class="button" title="Add a few players" id="Add_Players">+<sup>+</sup></div>
+	<ul>
+		@foreach (Player player in Model)
+        {
+			<li class='paidx@player.BuyinCount' data-id='@player.PlayerID' data-gameplayerid='@player.GamePlayerID' data-name='@player.FirstName @player.LastName'>
+				<span>@player.FirstName</span>
+				@for (int i = $player.BuyinCount; i > 1; i--) 
+                {
+					<div class='rebuy'>
+						<img src='img/1up_chip.png' alt='rebuy chip' />
+					</div>
+				}
+					
+				<div class="placing">@player.Placing</div><div class="clear"></div>
+					
+				<div class="player-menu hidden">
+					<div>
+						<h2></h2>
+						@if (@player.BuyinCount > 0) 
+                        {
+							<div class="button rebuy">Rebuy</div>
+							@if (String.IsNullOrEmpty(player.Placing)) 
+                            {
+								<div class="button place">Place</div>
+							}
+							<div class="button disabled" title="this feature is under construction" id="Button_Refund">Refund</div>
+						} 
+                        else
+                        {
+							<div class="button buy-in">Buy In</div>
+							<div class="button remove-player">Remove</div>
+						}
+						@if (gameGameID > 0)
+                        {
+							<div class="button player-menu-collapse">Close</div>
+						}
+					</div>
+				</div>
+			</li>
+		}
+	</ul>
+</div>

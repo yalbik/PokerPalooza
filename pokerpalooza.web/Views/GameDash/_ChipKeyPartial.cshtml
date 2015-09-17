@@ -1,0 +1,13 @@
+﻿@inherits WebViewPage<List<Chip>>
+@using pokerpalooza.domain
+
+<div class="chip-key plaque">
+	<div class="bevel">
+		@foreach (Chip chip in Model) {
+			<div class="item">
+				<img src="img/@chip.ImageFilename" alt="@chip.PrimaryColor chip, @chip.Denomination units" />
+				<span>@chip.Denomination</span>
+			</div>
+		}
+	</div>
+</div>

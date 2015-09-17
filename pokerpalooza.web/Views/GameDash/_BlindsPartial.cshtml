@@ -1,0 +1,18 @@
+﻿@inherits WebViewPage<List<Blind>>
+@using pokerpalooza.domain
+
+<div class="blinds">
+	<ul>
+		@foreach (Blind blind in Model) 
+        {
+			<li class="end-of-rebuy-@blind.EndOfRebuy.ToString() completed-@blind.Completed.ToString()" data-id="@blind.BlindID">
+				@if (blind.EndOfRebuy && @blind.Completed) 
+                {
+					<div class="button" title="Configure payouts" id="Configure_Payouts">$</div>
+				}
+				<span>@blind.SmallBlind/@blind.LargeBlind</span>
+				<div class="status"></div>
+			</li>
+		}
+	</ul>
+</div> 

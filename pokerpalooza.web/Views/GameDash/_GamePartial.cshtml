@@ -1,0 +1,7 @@
+﻿@inherits WebViewPage<Game>
+@using pokerpalooza.domain
+
+<div class="game" data-id="@Model.GameID" data-blind="@Model.BlindIncrementID" data-buyin="@Model.BuyInID">
+		<div class="total-pot"><label>Total Pot</label><span>$@Model.Totalpot</span></div>
+		<div class="chips-in-play"><label>Chips in play</label><span>$@Model.ChipsInPlay</span></div>
+</div>
